@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:weather_info/errorpage.dart';
 import 'package:weather_info/provider/weather_provider.dart';
 import 'package:intl/intl.dart';
+import 'package:weather_info/skeleton.dart';
 
-final locationProvider = StateProvider<String>((ref) => 'london');
+final locationProvider = StateProvider<String>((ref) => 'Dhaka');
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -383,12 +385,10 @@ class _HomePageState extends ConsumerState<HomePage> {
         ),
       );
     }, error: (error, _) {
-      return const Center(
-        child: Text("Something Went Wrong"),
-      );
+      return const ErrorPage();
     }, loading: () {
       return const Center(
-        child: CircularProgressIndicator(),
+        child: SkeletonScreen(),
       );
     });
   }
