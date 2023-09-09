@@ -56,7 +56,14 @@ class _HomePageState extends ConsumerState<HomePage> {
                         userInput = value;
                       },
                       onSubmitted: (value) {
-                        ref.read(locationProvider.notifier).state = value;
+                        if (value.isEmpty) {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content: Text('City name cannot be empty'),
+                          ));
+                        } else {
+                          ref.read(locationProvider.notifier).state = value;
+                        }
                       },
                       decoration: InputDecoration(
                         hintText: 'Enter city name',
@@ -88,7 +95,14 @@ class _HomePageState extends ConsumerState<HomePage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      ref.read(locationProvider.notifier).state = userInput;
+                      if (value.isEmpty) {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          content: Text('City name cannot be empty'),
+                        ));
+                      } else {
+                        ref.read(locationProvider.notifier).state = userInput;
+                      }
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -112,7 +126,6 @@ class _HomePageState extends ConsumerState<HomePage> {
               ),
               Center(
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.45,
                   width: MediaQuery.of(context).size.width * 0.9,
                   decoration: BoxDecoration(
                       color: const Color(0xff202B3B),
@@ -181,6 +194,9 @@ class _HomePageState extends ConsumerState<HomePage> {
                             ],
                           ),
                         ],
+                      ),
+                      const SizedBox(
+                        height: 12,
                       ),
                     ],
                   ),

@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Weather Info',
       theme: ThemeData(
+        fontFamily: "Poppins",
         useMaterial3: true,
       ),
       home: const SafeArea(child: TestPage()),
@@ -33,19 +34,3 @@ class TestPage extends StatelessWidget {
     );
   }
 }
-
-// class TestSection extends ConsumerWidget {
-//   const TestSection({super.key});
-
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     final weather = ref.watch(weatherData("Dhaka"));
-//     return weather.when(data: (data) {
-//       return Text(data.name.toString());
-//     }, error: (error, _) {
-//       return Text(error.toString());
-//     }, loading: () {
-//       return CircularProgressIndicator();
-//     });
-//   }
-// }
