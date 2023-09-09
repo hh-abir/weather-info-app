@@ -95,7 +95,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      if (value.isEmpty) {
+                      if (userInput.isEmpty) {
                         ScaffoldMessenger.of(context)
                             .showSnackBar(const SnackBar(
                           content: Text('City name cannot be empty'),
@@ -167,7 +167,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                     style: const TextStyle(fontSize: 13),
                                     children: [
                                       TextSpan(
-                                          text: "${value.main.humidity}°C\n"),
+                                          text: "${value.main.feelsLike}°C\n"),
                                       const TextSpan(text: "Feels like"),
                                     ]),
                               ),
@@ -187,8 +187,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                                     children: [
                                       TextSpan(
                                           text:
-                                              "   ${value.wind.speed} km\\h\n"),
-                                      const TextSpan(text: "   Wind"),
+                                              "  ${value.wind.speed} km\\h\n"),
+                                      const TextSpan(text: "  Wind"),
                                     ]),
                               ),
                             ],
@@ -228,8 +228,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                           text: TextSpan(
                               style: const TextStyle(fontSize: 13),
                               children: [
-                                TextSpan(text: "${value.main.humidity}°C\n"),
-                                const TextSpan(text: "Feels like"),
+                                TextSpan(text: "${value.main.humidity}%\n"),
+                                const TextSpan(text: "Humidity"),
                               ]),
                         ),
                       ],
@@ -258,7 +258,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 TextSpan(
                                     text:
                                         "${(value.main.pressure / 1015.22).toDouble().toStringAsFixed(2)} atm\n"),
-                                const TextSpan(text: "Wind"),
+                                const TextSpan(text: "Pressure"),
                               ]),
                         ),
                       ],
@@ -391,10 +391,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 ],
               ),
               const SizedBox(
-                height: 30,
-              ),
-              const SizedBox(
-                height: 100,
+                height: 10,
               ),
             ],
           ),
