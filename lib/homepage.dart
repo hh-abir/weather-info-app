@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:weather_info/developer.dart';
 import 'package:weather_info/errorpage.dart';
 import 'package:weather_info/provider/weather_provider.dart';
 import 'package:intl/intl.dart';
@@ -61,6 +62,12 @@ class _HomePageState extends ConsumerState<HomePage> {
                               .showSnackBar(const SnackBar(
                             content: Text('City name cannot be empty'),
                           ));
+                        } else if (value.toLowerCase() == "abir") {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: ((context) =>
+                                      const DeveloperScreen())));
                         } else {
                           ref.read(locationProvider.notifier).state = value;
                         }
@@ -100,6 +107,12 @@ class _HomePageState extends ConsumerState<HomePage> {
                             .showSnackBar(const SnackBar(
                           content: Text('City name cannot be empty'),
                         ));
+                      } else if (userInput.toLowerCase() == "abir") {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) =>
+                                    const DeveloperScreen())));
                       } else {
                         ref.read(locationProvider.notifier).state = userInput;
                       }
